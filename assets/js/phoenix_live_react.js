@@ -33,8 +33,9 @@ const LiveReact = {
     const pushEvent = this.pushEvent.bind(this);
     const pushEventTo = this.pushEventTo && this.pushEventTo.bind(this);
     const handleEvent = this.handleEvent && this.handleEvent.bind(this);
+    const removeHandleEvent = this.removeHandleEvent && this.removeHandleEvent.bind(this);
     const { target, componentClass } = initLiveReactElement(el, { pushEvent });
-    const props = render(el, target, componentClass, { pushEvent, pushEventTo, handleEvent });
+    const props = render(el, target, componentClass, { pushEvent, pushEventTo, handleEvent, removeHandleEvent });
     if (el.dataset.liveReactMerge) this.props = props
     Object.assign(this, { target, componentClass });
   },
@@ -44,6 +45,7 @@ const LiveReact = {
     const pushEvent = this.pushEvent.bind(this);
     const pushEventTo = this.pushEventTo && this.pushEventTo.bind(this);
     const handleEvent = this.handleEvent;
+    const removeHandleEvent = this.removeHandleEvent && this.removeHandleEvent.bind(this);
     const previousProps = this.props;
     const props = render(el, target, componentClass, { pushEvent, pushEventTo }, previousProps);
     if (el.dataset.liveReactMerge) this.props = props
